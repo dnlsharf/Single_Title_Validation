@@ -2,17 +2,23 @@ package core;
 
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
-
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+
+//import com.gargoylesoftware.htmlunit.BrowserVersion;
+
+//import org.openqa.selenium.By;
+//import org.openqa.selenium.WebElement;
+
 public class HtmlUnit {
 	public static void main(String[] args) {
-
-		WebDriver driver = new HtmlUnitDriver();   // Version 1.2 :: HtmlUnit
-
-		String text_case_id = "TC-002.01";
-		String url = "http://www.google.com";
-		String title_expected = "google.com";
 		
+		String param[] = args[0].split("\\|");
+		String url = param[0];
+		String title_expected = param[1];
+		
+		WebDriver driver = new HtmlUnitDriver();   // Version 1.2 :: HtmlUnit
+		String text_case_id = "TC-002.01";
+
 		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		String title_actual = driver.getTitle();
